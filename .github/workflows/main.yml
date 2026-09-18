@@ -1,31 +1,38 @@
- name: "azure-kubernetes-cluster-workflow"
+name: azure-kubernetes-cluster-workflow
 
+on:
+  push:
+    branches:
+      - main
 
- on: 
-   push:
-     branches:
-       - main
- permissions:
-      id-token: write
-      contents: read
+permissions:
+  id-token: write
+  contents: read
 
- jobs:
-   terraform-job:
-     runs-on: ubuntu-latest
-     
-     steps:
+jobs:
+  terraform-job:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout
-        uses: actions/checkout@v5.1.0
+        uses: actions/checkout@v4
+
       - name: Azure Login
-        uses: Azure/login@v3.0.2
+        uses: Azure/login@v2
         with:
           client-id: "ce2d9218-2c7f-4b4c-b479-031e73cfdcee"
           tenant-id: "98cc0d54-26f0-4577-8430-8890910ec6a1"
           subscription-id: "357d264e-5aaa-460e-a67d-e8db93e8e86e"
-      
-      - name: Terraform installer
-        uses: autero1/action-terraform@v3.0.1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-         terraform-version: "1.31.0"
+          terraform_version: "1.9.0"
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
     
        

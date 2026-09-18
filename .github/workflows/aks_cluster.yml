@@ -1,0 +1,13 @@
+ name: "azure-kubernetes-cluster-workflow"
+
+
+ on: workflow_dispatch
+
+ jobs:
+   terraform-job:
+     runs-on: self-hosted
+     
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v5.1.0
+        

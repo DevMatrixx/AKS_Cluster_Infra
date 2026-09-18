@@ -13,4 +13,16 @@
      steps:
       - name: Checkout
         uses: actions/checkout@v5.1.0
-        
+      - name: Azure Login
+        uses: Azure/login@v3.0.2
+        with:
+          client-id: "ce2d9218-2c7f-4b4c-b479-031e73cfdcee"
+          tenant-id: "98cc0d54-26f0-4577-8430-8890910ec6a1"
+          subscription-id: "357d264e-5aaa-460e-a67d-e8db93e8e86e"
+      
+      - name: Terraform installer
+        uses: autero1/action-terraform@v3.0.1
+        with:
+         terraform-version: "1.31.0"
+    
+       

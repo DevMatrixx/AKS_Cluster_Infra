@@ -40,7 +40,7 @@ stages:
             curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
             
             tfsec .
-          workingDirectory: '$(System.DefaultWorkingDirectory)/AKS_Cluster_Infra'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
       - task: Bash@3
         inputs:
           targetType: 'inline'
@@ -53,7 +53,7 @@ stages:
             sudo install -c -v tflint /usr/local/bin/
             tflint --init
             tflint
-          workingDirectory: '$(System.DefaultWorkingDirectory)/AKS_Cluster_Infra'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
 
 
 

@@ -1,0 +1,49 @@
+trigger: none
+
+pool: Docker-VM_Pool
+
+stages:
+  - stage: TerrafromInitAndValidate
+    displayName: Terraform_Init
+    jobs: 
+    - job: InitAndValidate
+      displayName: InitAndValidate
+      steps:
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: 'latest'
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'Axion-Service-Connection'
+          backendAzureRmResourceGroupName: 'Backend_RG'
+          backendAzureRmStorageAccountName: 'axionstatestorage'
+          backendAzureRmContainerName: 'axioncontainer'
+          backendAzureRmKey: 'terraform.tfstate'
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'validate'
+  - stage: Scanning
+    displayName: Terraform_Code_Scanning
+    dependsOn: TerrafromInitAndValidate
+    condition: succeeded()
+    jobs:
+    - job: Code_Scanning
+      displayName: Code_Scanning
+      steps:
+      - task: tfsec@1
+        inputs:
+          version: 'v1.26.0'
+          dir: '$(System.DefaultWorkingDirectory)/AKS_Cluster_Infra'
+      
+      
+
+
+
+      
+
+      
+        
+      

@@ -33,12 +33,14 @@ stages:
     - job: Code_Scanning
       displayName: Code_Scanning
       steps:
-      - task: tfsec@1
+      - task: Gitleaks@3
+        displayName: Gitleaks Scan
         inputs:
-          version: 'v1.26.0'
-          dir: '$(System.DefaultWorkingDirectory)/AKS_Cluster_Infra'
-      
-      
+          scanlocation: '$(Build.SourcesDirectory)'
+          configtype: 'predefined'
+          predefinedconfigfile: 'GitleaksUdmCombo.toml'
+          reportformat: 'sarif'
+        
 
 
 

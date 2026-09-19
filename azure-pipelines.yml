@@ -33,15 +33,13 @@ stages:
     - job: Code_Scanning
       displayName: Code_Scanning
       steps:
-      - task: Gitleaks@3
-        displayName: Gitleaks Scan
+      - task: Bash@3
         inputs:
-          scanlocation: '$(Build.SourcesDirectory)'
-          configtype: 'predefined'
-          predefinedconfigfile: 'GitleaksUdmCombo.toml'
-          reportformat: 'sarif'
-        
-
+          targetType: 'inline'
+          script: |
+            curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+            
+            tfsec .
 
 
       

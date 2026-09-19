@@ -40,20 +40,16 @@ stages:
             curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
             
             tfsec .
-          workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
+          workingDirectory: '$(System.DefaultWorkingDirectory)'
+
       - task: Bash@3
         inputs:
           targetType: 'inline'
           script: |
-            curl -sSLO https://github.com/terraform-linters/tflint/releases/latest/download/tflint_linux_amd64.zip
-            curl -sSLO https://github.com/terraform-linters/tflint/releases/latest/download/checksums.txt
-            gh attestation verify checksums.txt -R terraform-linters/tflint
-            sha256sum --ignore-missing -c checksums.txt
-            unzip tflint_linux_amd64.zip
-            sudo install -c -v tflint /usr/local/bin/
+            cd $(System.DefaultWorkingDirectory)
             tflint --init
-            tflint
-          workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
+            tflint --recursive
+      
 
 
 

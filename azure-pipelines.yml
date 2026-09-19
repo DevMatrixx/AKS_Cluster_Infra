@@ -48,7 +48,7 @@ stages:
           script: |
             cd $(System.DefaultWorkingDirectory)
             tflint --init
-            tflint --recursive
+            tflint --recursive -f [sarif]
       
 
 

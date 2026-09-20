@@ -32,7 +32,7 @@ stages:
     jobs:
     - job: Code_Scanning
       displayName: Code_Scanning
-      continueOnError: true
+      continueOnError: false
       steps:
       - task: Bash@3
         inputs:

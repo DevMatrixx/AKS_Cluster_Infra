@@ -32,6 +32,7 @@ stages:
     jobs:
     - job: Code_Scanning
       displayName: Code_Scanning
+      continueOnError: true
       steps:
       - task: Bash@3
         inputs:
@@ -49,6 +50,11 @@ stages:
             cd $(System.DefaultWorkingDirectory)
             tflint --init
             tflint --recursive -f default
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: 'checkov -d'
+          workingDirectory: '$(System.DefaultWorkingDirectory)'
       
 
 

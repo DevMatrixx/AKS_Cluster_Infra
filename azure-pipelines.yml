@@ -55,7 +55,7 @@ stages:
       - task: Bash@3
         inputs:
           targetType: 'inline'
-          script: 'checkov -d'
+          script: 'checkov -d . --framework'
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         displayName: 'Run Checkov'
         continueOnError: true

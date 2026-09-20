@@ -54,12 +54,20 @@ stages:
         displayName: 'Run tfsec'
         continueOnError: true
       - task: Bash@3
+        displayName: 'Run Checkov'
         inputs:
           targetType: 'inline'
-          script: 'checkov -d $(System.DefaultWorkingDirectory) --framework terraform'
-        displayName: 'Run Checkov'
+          script: |
+            export PATH="/home/Brijendra/.local/bin:$PATH"
+
+            echo "PATH=$PATH"
+            which checkov
+            checkov --version
+
+            checkov -d "$(System.DefaultWorkingDirectory)" --framework terraform
+          workingDirectory: '$(System.DefaultWorkingDirectory)'
         continueOnError: true
-      
+
 
 
 

@@ -79,6 +79,7 @@ stages:
           targetType: 'inline'
           script: |
             curl -fsSL https://raw.githubusercontent.com/infracost/cli/master/scripts/install.sh | sh
+            infracost scan
             infracost inspect
           workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
 

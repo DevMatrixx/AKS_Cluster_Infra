@@ -67,15 +67,19 @@ stages:
             checkov -d "$(System.DefaultWorkingDirectory)" --framework terraform
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         continueOnError: true
+  - stage: costStage
+    dependsOn: Scanning
+    displayName: Cost and Imapct Assesment stage
+    jobs:
+    - job: Infracost
+      displayName: Infracost
+      steps:
       - task: Bash@3
-        displayName: Run Tflint
-        continueOnError: true
         inputs:
           targetType: 'inline'
           script: |
-            winget install TerraformLinters.tflint
-            ls
-            tflint
+            curl -fsSL https://raw.githubusercontent.com/infracost/cli/master/scripts/install.sh | sh
+            infracost inspect
           workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
 
       

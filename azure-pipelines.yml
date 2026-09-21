@@ -42,7 +42,7 @@ stages:
             
             tfsec .
           workingDirectory: '$(System.DefaultWorkingDirectory)'
-        displayName: 'Run tflint'
+        displayName: 'Run tfsec'
 
       - task: Bash@3
         inputs:
@@ -51,7 +51,7 @@ stages:
             cd $(System.DefaultWorkingDirectory)
             tflint --init
             tflint --recursive -f default
-        displayName: 'Run tfsec'
+        displayName: 'Run tflint'
         continueOnError: true
       - task: Bash@3
         displayName: 'Run Checkov'
@@ -67,17 +67,18 @@ stages:
             checkov -d "$(System.DefaultWorkingDirectory)" --framework terraform
           workingDirectory: '$(System.DefaultWorkingDirectory)'
         continueOnError: true
-      
-      - task: Bash@3
+      - task: PowerShell@2
+        continueOnError: true
+        displayName: Run Tflint
         inputs:
           targetType: 'inline'
           script: |
-            curl -s https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz | bash
-            tar -xvf gitleaks_8.30.1_linux_arm64.tar.gz
-            sudo mv gitleaks /home/Brijendra/.local/bin/gitleaks
-            sudo chmod +x /home/Brijendra/.local/bin/gitleaks
-            gitleaks 
-            dir: '$(System.DefaultWorkingDirectory)'
+            winget install TerraformLinters.tflint           
+            ls
+            tflint
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
+      
+      
 
 
 

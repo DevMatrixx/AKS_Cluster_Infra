@@ -7,7 +7,7 @@ labels:
 body:
  - type: markdown
    attributes:
-   value: |
-     "Azure Container Registry"   
+     value: |
+       "Azure Container Registry"   
     
   

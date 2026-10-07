@@ -11,24 +11,5 @@ body:
         ### Azure Container Registry - Deployment
         Fill in the fields below to deploy an Azure Web App via the automation pipeline.
         Execution starts when this issue gets the label **create-azure-container-registry**.
-        
-  - type: input
-    id: ritm
-    attributes:
-      label: ritm
-      description: "RITM number for audit traceability. Example: RITM1234567"
-      placeholder: RITM1234567
-      value: RITM1234567
-    validations:
-      required: true
-  
-  
-
-    id: network_connectivity
-    attributes:
-    label: Network Connectivity
-    description: Select the approved network
-    options:
-    - Public access
-    - Private access
+    
   

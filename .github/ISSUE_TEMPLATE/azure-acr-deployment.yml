@@ -62,54 +62,57 @@ body:
   - type: dropdown
     id: domain_name_label_scope
     attributes:
-    label: Domain Name Label Scope
-    description: Select the required domain name label scope.
-    options:
-    - TenantReuse
-    - SubscriptionReuse
-    - ResourceGroupReuse
-    - NoReuse
+      label: Domain Name Label Scope
+      description: Select the required domain name label scope.
+      options:
+      - TenantReuse
+      - SubscriptionReuse
+      - ResourceGroupReuse
+      - NoReuse
     validations:
-    required: true
+      required: true
   
   - type: checkboxes
     id: use_availability_zones
     attributes:
-    label: Use Availability Zones
-    description: Select if Availability Zone support is required.
-    options:
-    - label: Enable Availability Zones
-    required: false
+      label: Use Availability Zones
+      description: Select if Availability Zone support is required.
+      options:
+      - label: Enable Availability Zones
+    validations:
+      required: false
 
   - type: dropdown
     id: pricing_plan
     attributes:
-    label: Pricing Plan
-    description: Select the approved Azure Container Registry pricing plan.
-    options:
-    - Basic
-    - Standard
-    - Premium
+      label: Pricing Plan
+      description: Select the approved Azure Container Registry pricing plan.
+      options:
+      - Basic
+      - Standard
+      - Premium
     validations:
-    required: true
+      required: true
       
   - type: dropdown
     id: role_assignment_permission_mode
     attributes:
-    label: Role Assignment Permission Mode
-    description: Select the required role assignment permission mode.
-    options:
-    - RBAC Registry Permissions
-    - RBAC Registry + ABAC Repository Permissions
+      label: Role Assignment Permission Mode
+      description: Select the required role assignment permission mode.
+      options:
+      - RBAC Registry Permissions
+      - RBAC Registry + ABAC Repository Permissions
     validations:
-    required: true
+      required: true
   
   - type: dropdown
     id: network_connectivity
     attributes:
-    label: Network Connectivity
-    description: Select the approved network
-    options:
-    - Public access
-    - Private access
+      label: Network Connectivity
+      description: Select the approved network
+      options:
+      - Public access
+      - Private access
+    validations:
+      required: true
   

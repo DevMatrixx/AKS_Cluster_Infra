@@ -5,9 +5,9 @@ labels:
   - create-azure-container
 
 body:
- - type: markdown
-   attributes:
-     value: |
-       "Azure Container Registry"   
+  - type: markdown
+    attributes:
+      value: |
+        "Azure Container Registry"   
     
   

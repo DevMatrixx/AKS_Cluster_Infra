@@ -8,6 +8,6 @@ body:
  - type: markdown
    attributes:
    value: |
-      "Azure Container Registry"   
+     "Azure Container Registry"   
     
   

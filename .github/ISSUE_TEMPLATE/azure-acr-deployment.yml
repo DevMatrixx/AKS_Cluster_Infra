@@ -2,7 +2,7 @@ name: Container Registry - Deployment
 description: Request deployment of an Azure Container Registry.
 title: "Container Registry - Deployment"
 labels:
-  - create-azure-container-registry
+  - create-azure-container
 
 body:
   - type: markdown

@@ -34,8 +34,8 @@ body:
         - DXC
         - TCS
         default: 0
-     validations:
-        required: true
+    validations:
+      required: true
 
   - type: dropdown
     id: subscription_id

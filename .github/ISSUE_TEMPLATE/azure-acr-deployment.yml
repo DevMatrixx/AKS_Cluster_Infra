@@ -59,6 +59,24 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: registry_name
+    attributes:
+      label: registry_name
+      description: |
+        Format: az{yy}{appid}acr{nn}{env}
+        - yy = year (e.g., 26 for 2026)
+        - appid = 2-10 lowercase characters (letters and numbers allowed)
+        - web      = Fixed resource type
+        - {nn} = instance number (e.g., 01, 02)
+        - env = environment (dev = development, test = testing, uat = user acceptance testing, prod = production)
+        Example: az26githubacr01dev
+      placeholder: az26githubacr01dev
+      value: az26githubacr01dev
+    validations:
+      required: true
+
+
   - type: dropdown
     id: domain_name_label_scope
     attributes:

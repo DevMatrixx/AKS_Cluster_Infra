@@ -8,6 +8,18 @@ body:
   - type: markdown
     attributes:
       value: |
-        "Azure Container Registry"   
+        "Azure Container Registry"
+ - type: input
+   id: ritm
+   attributes:
+      label:
+      description:
+      placeholder:
+      value:
+   validation:
+     required: true
+   
+   
+   
     
   

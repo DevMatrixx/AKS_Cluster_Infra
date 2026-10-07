@@ -22,22 +22,8 @@ body:
     validations:
       required: true
   
-  - type: dropdown
-    id: dso
-    attributes:
-      label: dso
-      description: DSO / operational ownership for this Logic App.
-      options:
-        - FAAST
-        - WIPRO
-        - CTS
-        - DXC
-        - TCS
-      default: 0
-    validations:
-      required: true
-      
-  - type: dropdown
+  
+
     id: network_connectivity
     attributes:
     label: Network Connectivity

@@ -83,10 +83,11 @@ body:
       label: Domain Name Label Scope
       description: Select the required domain name label scope.
       options:
-      - TenantReuse
-      - SubscriptionReuse
-      - ResourceGroupReuse
-      - NoReuse
+      - Unsecure
+      - Tenant Reuse
+      - Subscription Reuse
+      - ResourceGroup Reuse
+      - No Reuse
     validations:
       required: true
   

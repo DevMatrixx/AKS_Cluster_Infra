@@ -1,0 +1,132 @@
+name: Container Registry - Deployment
+description: Request deployment of an Azure Container Registry.
+title: "Container Registry - Deployment"
+labels:
+  - create-azure-container-registry
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Azure Container Registry - Deployment
+        Fill in the fields below to deploy an Azure Web App via the automation pipeline.
+        Execution starts when this issue gets the label **create-azure-container-registry**.
+        
+  - type: input
+    id: ritm
+    attributes:
+      label: ritm
+      description: "RITM number for audit traceability. Example: RITM1234567"
+      placeholder: RITM1234567
+      value: RITM1234567
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: dso
+    attributes:
+      label: dso
+      description: DSO / operational ownership for this Logic App.
+      options:
+        - FAAST
+        - WIPRO
+        - CTS
+        - DXC
+        - TCS
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: subscription_id
+    attributes:
+      label: subscription_id
+      description: "Select subscription from the given list."
+      options:
+        - FAAST NON-PROD
+        - FAAST PROD
+        - Data & Analytics PaaS Non-Prod
+        - Data & Analytics PaaS Prod
+      default: 0
+
+  - type: input
+    id: resource_group_name
+    attributes:
+      label: resource_group_name
+      description: "Must already exist in the selected subscription."
+      placeholder: AZ26P1-APP-RG01
+      value: AZ26P1-APP-RG01
+    validations:
+      required: true
+
+  - type: input
+    id: registry_name
+    attributes:
+      label: registry_name
+      description: |
+        Format: az{yy}{appid}acr{nn}{env}
+        - yy = year (e.g., 26 for 2026)
+        - appid = 2–10 lowercase characters (letters and numbers allowed)
+        - web      = Fixed resource type
+        - {nn} = instance number (e.g., 01, 02)
+        - env = environment (dev = development, test = testing, uat = user acceptance testing, prod = production)
+        Example: az26githubacr01dev
+      placeholder: az26githubacr01dev
+      value: az26githubacr01dev
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain_name_label_scope
+    attributes:
+    label: Domain Name Label Scope
+    description: Select the required domain name label scope.
+    options:
+    - TenantReuse
+    - SubscriptionReuse
+    - ResourceGroupReuse
+    - NoReuse
+    validations:
+    required: true
+  
+  - type: checkboxes
+    id: use_availability_zones
+    attributes:
+    label: Use Availability Zones
+    description: Select if Availability Zone support is required.
+    options:
+    - label: Enable Availability Zones
+    required: false
+
+  - type: dropdown
+    id: pricing_plan
+    attributes:
+    label: Pricing Plan
+    description: Select the approved Azure Container Registry pricing plan.
+    options:
+    - Basic
+    - Standard
+    - Premium
+    validations:
+    required: true
+      
+  - type: dropdown
+    id: role_assignment_permission_mode
+    attributes:
+    label: Role Assignment Permission Mode
+    description: Select the required role assignment permission mode.
+    options:
+    - RBAC Registry Permissions
+    - RBAC Registry + ABAC Repository Permissions
+    validations:
+    required: true
+  
+  - type: dropdown
+    id: network_connectivity
+    attributes:
+    label: Network Connectivity
+    description: Select the approved network
+    options:
+    - Public access
+    - Private access
+  

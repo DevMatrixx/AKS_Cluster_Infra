@@ -33,7 +33,7 @@ body:
         - CTS
         - DXC
         - TCS
-        default: 0
+      default: 0
     validations:
       required: true
 
@@ -47,7 +47,9 @@ body:
         - FAAST PROD
         - Data & Analytics PaaS Non-Prod
         - Data & Analytics PaaS Prod
-        default: 0
+      default: 0
+    validations:
+      required: true
 
   - type: input
     id: resource_group_name

@@ -12,10 +12,10 @@ body:
  - type: input
    id: ritm
    attributes:
-      label:
-      description:
-      placeholder:
-      value:
+      label: ritm
+      description: "RITM number for audit tracebility."
+      placeholder: RITM1234567
+      value: RITM1234567
    validation:
      required: true
    

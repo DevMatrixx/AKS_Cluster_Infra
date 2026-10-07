@@ -5,11 +5,10 @@ labels:
   - create-azure-container
 
 body:
-  - type: markdown
-    attributes:
-      value: |
-        ### Azure Container Registry - Deployment
-        Fill in the fields below to deploy an Azure Web App via the automation pipeline.
-        Execution starts when this issue gets the label **create-azure-container-registry**.
+ - type: markdown
+   attributes:
+   value: |
+      ### Azure Container Registry
+   
     
   
